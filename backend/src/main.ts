@@ -23,4 +23,4 @@ app.get("/", (req, res) => {
 
 app.use('/chat', chat);
 
-app.use(express.static('frontend'));
+app.use(express.static('../frontend'));

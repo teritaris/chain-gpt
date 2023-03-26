@@ -146,7 +146,7 @@
 
             displayChatMessage(message, 'right');
 
-			const url = `http://symbol-01.drugn.life:8888/chat/ask?prompt=${encodeURIComponent(message)}`;
+			const url = `https://chain-gpt.teritaris.net/chat/ask?prompt=${encodeURIComponent(message)}`;
 	
 			const response = await fetch(url);
 			const data = await response.json();
