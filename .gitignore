@@ -5,6 +5,3 @@ node_modules
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/extentions.json
-
-src/entity/User.ts
-src/routes/okusuri.ts
