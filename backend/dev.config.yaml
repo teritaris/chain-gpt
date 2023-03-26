@@ -1,0 +1,32 @@
+web:
+  listen: 0.0.0.0
+  port: 8888
+db:
+  type: "mysql"
+  host: ""
+  port: 3306
+  username: ""
+  password: ""
+  database: "drugn"
+  entities: ["src/entity/**/*.ts"]
+  migrations: ["src/migration/**/*.ts"]
+  subscribers: ["src/subscriber/**/*.ts"]
+  logging: true
+  synchronize: false
+symbol:
+  node:
+    networkType: "testnet"
+    host: "https://sym-test-03.opening-line.jp"
+    port: 3001
+    epochAdjustment: 1667250467
+    generationHash: "49D6E1CE276A85B70EAFE52349AACCA389302E7A9754BCF1221E79494FC665A4"
+  addresses:
+    constraint: "TDJTBUWFSCSKNRJWK3ZJBWNMCHQOLKESXUXBWQQ" #制約条件
+    tone: "TBP5K2CLBQFUEAMEU5HKKN3SVUCPH5XHDNPKMVQ" # 口調
+    action: "TD7G3M52CLH6WOO2BGKHURLTKCPE2GGJ25RITHA" # 行動指針
+    constraintProxy: "TAZJNSTWFBART4DQVT7WNVRONDENQ2N7FHOPEZI" # 制約条件プロキシ
+    toneProxy: "TCPJO5I7FXNHFK3N3CJKFGQFY5USKZZB7Z3OOYA" # 口調プロキシ
+    actionProxy: "TDG3Q2TCUSYQI3Z4YA6ONES7KUGIIE4LM4MNXVQ" # 行動指針プロキシ
+    asker: "TAGH4PFOXXNAMZSMELUT4R73BLTEGG45QYUCGNY" # TxMessageでGPTの応答返すやつ
+  mosaics:
+    thanks: "027CFDB761282241" # 人格設定返礼

@@ -1,0 +1,33 @@
+web:
+  listen: 0.0.0.0
+  port: 8888
+db:
+  type: "mysql"
+  host: ""
+  port: 3306
+  username: ""
+  password: ""
+  database: "drugn"
+  entities: ["src/entity/**/*.ts"]
+  migrations: ["src/migration/**/*.ts"]
+  subscribers: ["src/subscriber/**/*.ts"]
+  logging: true
+  synchronize: false
+symbol:
+  node:
+    networkType: "mainnet"
+    host: "https://sym-main-08.opening-line.jp"
+    port: 3001
+    epochAdjustment: 1615853185
+    generationHash: "57F7DA205008026C776CB6AED843393F04CD458E0AA2D9F1D5F31A402072B2D6"
+  addresses:
+    constraint: "NB5UPTZVZSKWZXQGAJCEA4U3NH7UPPGZW5YLGRI" #制約条件
+    tone: "NCJXZOYWQXQULAKAICUMJCH6XLLVONJU2KBSIZQ" # 口調
+    action: "NBUCYOD2PUC2X4NLXEGZ6XJU53E3U33SKCEXCYY" # 行動指針
+    constraintProxy: "NBNIEPWSA3BRQOLUT4BEJL4CB3KR5EBX3PQBEGY" # 制約条件プロキシ 50
+    toneProxy: "NBT3HSXXXEQJEA6GFZ3AWWBFUJE5DVLPHOJAOSY" # 口調プロキシ 50
+    actionProxy: "NBEDEP54BOFH2KKQJP6NXTP42G6TALCUIJBADUA" # 行動指針プロキシ 50
+    asker: "NDX5JKAT7CYIBESQFBL6EACDP6OK7ZHNDXHEEWQ" # TxMessageでGPTの応答返すやつ 50
+    # mosaicReturn: "NDPIEZ25EY2AMCIR3QALNYUHWIVGHEHKUON4MAY" 人格設定返礼モザイク送信者 50+200
+  mosaics:
+    thanks: "6D14053CD3B145B5" # 人格設定返礼

@@ -1,0 +1,13 @@
+node_modules
+.env
+.env_dev
+.env_prod
+pm2.config.js
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/extentions.json
+
+src/entity/User.ts
+src/routes/okusuri.ts

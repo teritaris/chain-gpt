@@ -1,0 +1,29 @@
+{
+    "appenders": {
+        "slack": {
+            "type": "@log4js-node/slack",
+            "token": "xoxp-xxxxxxxxxxxxxxxxxx",
+            "channel_id": "#xxxxx",
+            "username": "hogehogera",
+            "category": "error"
+        },
+        "console": {
+            "type": "console"
+        }
+    },
+    "categories": {
+        "default": {
+            "appenders": [
+                "console"
+            ],
+            "level": "debug"
+        },
+        "slack": {
+            "appenders": [
+                "console",
+                "slack"
+            ],
+            "level": "error"
+        }
+    }
+}
