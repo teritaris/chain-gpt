@@ -1,3 +1,4 @@
+import { logger } from '../init';
 import { Configuration, OpenAIApi } from "openai";
 import 'dotenv/config';
 
@@ -36,7 +37,8 @@ const openai = new OpenAIApi(configuration);
 // `
 
 export const ask = async (messages: any, model: string = "gpt-3.5-turbo-0301"): Promise<string | undefined> => {
-    console.dir(messages)
+    logger.info("------ask message-----")
+    logger.info(messages)
     const response = await openai.createChatCompletion({
         model: model,
         messages: messages

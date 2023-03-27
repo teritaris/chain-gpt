@@ -128,6 +128,7 @@
         </div>
     </div>
     <script>
+        const messageHistory = [];
         function displayChatMessage(message, side) {
             const chatArea = document.getElementById('chat-area');
 
@@ -146,10 +147,21 @@
 
             displayChatMessage(message, 'right');
 
-			const url = `https://chain-gpt.teritaris.net/chat/ask?prompt=${encodeURIComponent(message)}`;
-	
-			const response = await fetch(url);
-			const data = await response.json();
+			const url = `https://chain-gpt.teritaris.net/chat/history-ask`;
+            const body = {
+                'messageHistory': messageHistory,
+                'prompt': message
+            }
+			const data = await fetch(url,{
+                method: "POST",
+                body: JSON.stringify(body),
+                headers: {'Content-Type': 'application/json'}
+            }).then(async (response)=> {
+                const data = await response.json();
+                // 会話履歴を参照して応答するために入れておく
+                messageHistory.push({ role: "user", content: message},{ role: "assistant", content: data.response})
+                return data
+            });
 
             displayChatMessage(data.response, 'left');
         }

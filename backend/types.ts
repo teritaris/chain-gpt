@@ -4,3 +4,12 @@ export interface PersonalityDefine {
     action: string;
 }
 
+export interface InclusiveHistoryMessage {
+    role: string,
+    content: string,
+}
+
+export interface HistoryAskRequestBody {
+    messageHistory: InclusiveHistoryMessage[];
+    prompt: string;
+}
