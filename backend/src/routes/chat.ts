@@ -1,6 +1,6 @@
 import { Config as C, logger } from '../init';
 import express from "express";
-import {ask} from "../libs/ChatManager";
+import { ask } from "../libs/ChatManager";
 import { getPersonalityDefineFullString } from '../libs/TransactionParser';
 import { HistoryAskRequestBody, InclusiveHistoryMessage } from '../../types';
 
@@ -12,12 +12,16 @@ chat.route('/ask').get(async (req: express.Request, res: express.Response) => {
         const prompt: string = req.query.prompt as string;
         logger.info(prompt, "prompt");
         const personality: string = await getPersonalityDefineFullString();
-        const messages: any = [
-                { role: "system", content: personality},
-                { role: "user", content: prompt},
-            ];
+        const messages: InclusiveHistoryMessage[] = [
+            { role: "system", content: personality },
+            { role: "user", content: prompt },
+        ];
+        logger.info("-----askMessage-----")
+        logger.info(messages);
         const askRes: string = await ask(messages) as string;
-        res.send({response: askRes})
+        logger.info("-----askRes-----")
+        logger.info(askRes);
+        res.send({ response: askRes })
     } catch (error) {
         res.status(501).send({ error: 'Impl error' });
         logger.error(error);
@@ -34,16 +38,20 @@ chat.route('/history-ask').post(async (req: express.Request, res: express.Respon
         // 履歴件数のチェック
         // 20件以上ある場合は最新の20件になるように古いのを消す
         const prevMessages: InclusiveHistoryMessage[] = messageHistory.slice(1).slice(-20);
-        
+
         const personality: string = await getPersonalityDefineFullString();
         const messages: InclusiveHistoryMessage[] = [
-                { role: "system", content: personality},
-                ...prevMessages,
-                { role: "user", content: prompt},
-            ];
+            { role: "system", content: personality },
+            ...prevMessages,
+            { role: "user", content: prompt },
+        ];
 
+        logger.info("-----historyAskMessage-----");
+        logger.info(messages);
         const askRes: string = await ask(messages) as string;
-        res.send({response: askRes})
+        logger.info("-----historyAskRes-----");
+        logger.info(askRes);
+        res.send({ response: askRes })
     } catch (error) {
         res.status(501).send({ error: 'Impl error' });
         logger.error(error);

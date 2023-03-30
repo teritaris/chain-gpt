@@ -17,6 +17,9 @@ const constraintConstString: string = "制約条件:\n";
 const toneConstString: string = "ちゃちゃしばのセリフ、口調の例:\n";
 const actionConstString: string = "ちゃちゃしばの行動指針:\n";
 
+const sleep = ((ms: number) => new Promise(resolve => setTimeout(resolve, ms)));
+
+
 // 指定アドレスへのトランザクションからメッセージを取得する
 const getMessagesByTransaction = async (targetAddress: string): Promise<string[]> => {
     const symbolRepo: RepositoryFactoryHttp = await createSymbolRepositoryFactory();
@@ -44,7 +47,10 @@ const getMessagesByTransaction = async (targetAddress: string): Promise<string[]
             }
         });
 
+        sleep(2000)
+
         lastPage = res?.isLastPage
+        pageNumber++;
     }
     return messages;
 }
@@ -89,7 +95,7 @@ export const getPersonalityDefine = async (): Promise<PersonalityDefine> => {
 // OpenAI APIのsystemロールに渡す全文
 export const getPersonalityDefineFullString = async (): Promise<string> => {
     const pDef: PersonalityDefine = await getPersonalityDefine();
-    const fullSetting: string = promiseConstString + 
+    const fullSetting: string = promiseConstString +
         constraintConstString + pDef.constraint + '\n' +
         toneConstString + pDef.tone + '\n' +
         actionConstString + pDef.action;

@@ -37,8 +37,6 @@ const openai = new OpenAIApi(configuration);
 // `
 
 export const ask = async (messages: any, model: string = "gpt-3.5-turbo-0301"): Promise<string | undefined> => {
-    logger.info("------ask message-----")
-    logger.info(messages)
     const response = await openai.createChatCompletion({
         model: model,
         messages: messages

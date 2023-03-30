@@ -16,7 +16,7 @@ db:
 symbol:
   node:
     networkType: "mainnet"
-    host: "https://sym-main-08.opening-line.jp"
+    host: "https://symbol-main-1.nemtus.com"
     port: 3001
     epochAdjustment: 1615853185
     generationHash: "57F7DA205008026C776CB6AED843393F04CD458E0AA2D9F1D5F31A402072B2D6"

@@ -6,7 +6,7 @@ const symbol = require("/node_modules/symbol-sdk");
 // const EPOCH_ADJUSTMENT = 1667250467;
 // const NETWORK_TYPE = symbol.NetworkType.TEST_NET;
 // ===========DEV===========
-const NODE_URL = "https://sym-main-08.opening-line.jp:3001";
+const NODE_URL = "https://symbol-main-1.nemtus.com:3001";
 const EPOCH_ADJUSTMENT = 1615853185;
 const NETWORK_TYPE = symbol.NetworkType.MAIN_NET;
 
@@ -37,6 +37,8 @@ export const handleSSS = (toAddress, message, fee) => {
 }
 
 
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+
 // 指定アドレスへのトランザクションからメッセージを取得する
 export const getMessagesByTransaction = async (targetAddress) => {
     const repo = new symbol.RepositoryFactoryHttp(NODE_URL);
@@ -63,7 +65,10 @@ export const getMessagesByTransaction = async (targetAddress) => {
             }
         });
 
+        sleep(2000)
+
         lastPage = res?.isLastPage
+        pageNumber++;
     }
     return messages;
 }

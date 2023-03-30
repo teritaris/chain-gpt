@@ -53,8 +53,11 @@ const newBlock = async (block: NewBlock) => {
                             { role: "system", content: personality},
                             { role: "user", content: transferTx.message.payload},
                         ];
-                        console.dir(messages);
+                        logger.info("-----txAskMessage-----");
+                        logger.info(messages);
                         const askRes: string = await ask(messages) as string
+                        logger.info("-----txAskRes-----");
+                        logger.info(askRes);
                         sendTransfer(transferTx, askRes);
                     }
                 }
